@@ -10,6 +10,7 @@ import { TodoInput } from "../AddTodo/AddTodo.styled";
 import useSWR from "swr";
 import { useTheme } from "styled-components";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 interface IEditModalProps {
     isModalOpen: boolean;
     closeModal: () => void;
@@ -44,8 +45,8 @@ const EditModal: React.FC<IEditModalProps> = ({
         try {
             const text = inputRef.current ? inputRef.current.value : "";
             const editedTodo = { ...todo, text };
-            console.log(editedTodo);
             await updateTodo(editedTodo);
+            toast.info("Todo edited succesfully");
             mutate();
             closeModal();
         } catch (err) {

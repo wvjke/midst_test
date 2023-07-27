@@ -6,6 +6,7 @@ import {
     todosUrlEndpoint as cacheKey,
     Todo,
 } from "../../api/todosApi";
+import { toast } from "react-toastify";
 import useSWR from "swr";
 import { useTheme } from "styled-components";
 
@@ -39,6 +40,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
     const handleDeleteTodo = async () => {
         try {
             await deleteTodo(todo.id);
+            toast.info("Todo deleted succesfully");
             mutate();
         } catch (err) {
             console.error(err);
@@ -71,10 +73,10 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
                 }}
             >
                 <TodoButton color="#4caf50" onClick={handleDeleteTodo}>
-                    Yes
+                    Confirm
                 </TodoButton>
                 <TodoButton color="#f44336" onClick={() => closeModal()}>
-                    No
+                    Cancel
                 </TodoButton>
             </div>
         </Modal>

@@ -6,6 +6,8 @@ import {
 } from "../../api/todosApi";
 import useSWR from "swr";
 import { useRef } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 const AddTodo = () => {
     const { mutate } = useSWR(cacheKey, getTodos);
 
@@ -20,6 +22,7 @@ const AddTodo = () => {
                     : "nothing here",
                 completed: false,
             });
+            toast.success("Todo added successfully");
             mutate();
             if (inputRef.current) {
                 inputRef.current.value = "";

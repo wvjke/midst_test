@@ -4,6 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styles/themes";
 import { useState, useEffect } from "react";
 import { TodoButton } from "./Components/AddTodo/AddTodo.styled";
+import { ToastContainer } from "react-toastify";
+
 function App() {
     const [theme, setTheme] = useState(() => {
         const storedTheme = localStorage.getItem("theme");
@@ -39,6 +41,19 @@ function App() {
                         {theme === lightTheme ? "Dark" : "light"}
                     </TodoButton>
                 </div>
+                 <ToastContainer
+                position="top-center"
+                autoClose={1500}
+                limit={3}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover={false}
+                theme="light"
+            />
             </div>
         </ThemeProvider>
     );
