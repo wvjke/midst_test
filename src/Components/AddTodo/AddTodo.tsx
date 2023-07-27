@@ -33,17 +33,15 @@ const AddTodo = () => {
     };
 
     return (
-        <>
-            <AddTodoWrapper>
-                <form
-                    onSubmit={handleAddTodo}
-                    style={{ display: "flex", width: "100%", gap: "20px" }}
-                >
-                    <TodoInput required ref={inputRef} />
-                    <TodoButton color="#007bff">Add Todo</TodoButton>
-                </form>
-            </AddTodoWrapper>
-        </>
+        <AddTodoWrapper>
+            <form
+                onSubmit={handleAddTodo}
+                style={{ display: "flex", width: "100%", gap: "20px" }}
+            >
+                <TodoInput required ref={inputRef} />
+                <TodoButton color="#007bff">Add Todo</TodoButton>
+            </form>
+        </AddTodoWrapper>
     );
 };
 
