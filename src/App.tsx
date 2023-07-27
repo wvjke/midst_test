@@ -41,19 +41,19 @@ function App() {
                         {theme === lightTheme ? "Dark" : "light"}
                     </TodoButton>
                 </div>
-                 <ToastContainer
-                position="top-center"
-                autoClose={1500}
-                limit={3}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable
-                pauseOnHover={false}
-                theme="light"
-            />
+                <ToastContainer
+                    position="top-center"
+                    autoClose={1500}
+                    limit={3}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable
+                    pauseOnHover={false}
+                    theme={theme === lightTheme ? "light" : "dark"}
+                />
             </div>
         </ThemeProvider>
     );
