@@ -8,6 +8,7 @@ import {
 } from "../../api/todosApi";
 import { TodoInput } from "../AddTodo/AddTodo.styled";
 import useSWR from "swr";
+import { useTheme } from "styled-components";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 interface IEditModalProps {
@@ -37,6 +38,7 @@ const EditModal: React.FC<IEditModalProps> = ({
 }) => {
     const { mutate } = useSWR(cacheKey, getTodos);
     const inputRef = useRef<HTMLInputElement>(null);
+    const theme = useTheme();
 
     const handleEditTodo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -56,17 +58,27 @@ const EditModal: React.FC<IEditModalProps> = ({
         <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
+            style={{
+                content: {
+                    ...customStyles.content,
+                    color: theme.colors.text,
+                    backgroundColor: theme.colors.background,
+                },
+                overlay: {
+                    backgroundColor: `${theme.colors.background}99`,
+                },
+            }}
         >
-            <h3 style={{ textAlign: "center" }}>Edit Todo Text</h3>
+            <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
+                Edit Todo Text
+            </h3>
             <form
                 style={{
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    gap: "10px",
+                    gap: "20px",
                 }}
                 onSubmit={handleEditTodo}
             >

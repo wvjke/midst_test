@@ -16,6 +16,7 @@ export const TodoInput = styled.input.attrs({ type: "text" })`
     transition: border-color 0.3s;
     width: 100%;
     height: fit-content;
+    background-color: ${(props) => props.theme.colors.secondary};
     &:focus {
         border-color: #007bff;
     }

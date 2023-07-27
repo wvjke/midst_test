@@ -5,7 +5,9 @@ import { TodoListWrapper, NoTodos, StyledSpinner } from "./TodoList.styled";
 import AddTodo from "../AddTodo/AddTodo";
 
 const TodosList = () => {
-    const { data, error, isLoading } = useSWR(cacheKey, getTodos);
+    const { data, error, isLoading } = useSWR(cacheKey, getTodos, {
+        onSuccess: (data) => data.sort((a, b) => +b.id - +a.id),
+    });
 
     if (error)
         return (
