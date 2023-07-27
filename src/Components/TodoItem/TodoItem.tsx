@@ -60,9 +60,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
                     </div>
                     <TodoCreatedText>
                         created:
-                        {dayjs
-                            .unix(todo.createdAt)
-                            .format(" YYYY-MM-DD HH:mm:ss")}
+                        {dayjs.unix(todo.createdAt).format(" DD-MM-YYYY HH:mm")}
                     </TodoCreatedText>
                 </div>
 

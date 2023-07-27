@@ -1,7 +1,12 @@
 import useSWR from "swr";
 import { getTodos, todosUrlEndpoint as cacheKey } from "../../api/todosApi";
 import TodoItem from "../TodoItem/TodoItem";
-import { TodoListWrapper, NoTodos, StyledSpinner } from "./TodoList.styled";
+import {
+    TodoListWrapper,
+    NoTodos,
+    StyledSpinner,
+    TodoListHeader,
+} from "./TodoList.styled";
 import AddTodo from "../AddTodo/AddTodo";
 
 const TodosList = () => {
@@ -34,6 +39,9 @@ const TodosList = () => {
     return (
         <>
             <TodoListWrapper>
+                <TodoListHeader>
+                    Todos {`(${data?.length})` || "(0)"}
+                </TodoListHeader>
                 <AddTodo />
                 {data && data.length > 0 ? (
                     data.map((todo) => {

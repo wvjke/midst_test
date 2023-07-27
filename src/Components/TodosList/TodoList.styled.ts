@@ -7,6 +7,13 @@ export const TodoListWrapper = styled.div`
     border-radius: 5px;
     box-shadow: 5px 5px 5px 5px grey;
 `;
+
+export const TodoListHeader = styled.div`
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+`;
+
 export const NoTodos = styled.div`
     text-align: center;
     font-size: 28px;
