@@ -7,6 +7,7 @@ import {
     Todo,
 } from "../../api/todosApi";
 import useSWR from "swr";
+import { useTheme } from "styled-components";
 
 interface IDeleteModalProps {
     isModalOpen: boolean;
@@ -34,6 +35,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
     todo,
 }) => {
     const { mutate } = useSWR(cacheKey, getTodos);
+    const theme = useTheme();
     const handleDeleteTodo = async () => {
         try {
             await deleteTodo(todo.id);
@@ -47,8 +49,16 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
         <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
+            style={{
+                content: {
+                    ...customStyles.content,
+                    color: theme.colors.text,
+                    backgroundColor: theme.colors.background,
+                },
+                overlay: {
+                    backgroundColor: `${theme.colors.background}99`,
+                },
+            }}
         >
             <h3 style={{ textAlign: "center" }}>
                 Are you sure you want to delete this Todo?
