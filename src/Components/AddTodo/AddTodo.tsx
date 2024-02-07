@@ -1,41 +1,41 @@
-import { TodoInput, AddTodoWrapper, TodoButton } from "./AddTodo.styled";
-import {
-    getTodos,
-    addTodo,
-    todosUrlEndpoint as cacheKey,
-} from "../../api/todosApi";
-import useSWR from "swr";
+import { TodoInput, AddTodoWrapper } from "./AddTodo.styled";
+// import {
+//     getTodos,
+//     todosUrlEndpoint as cacheKey,
+// } from "../../api/todosApi";
+// import useSWR from "swr";
 import { useRef } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 const AddTodo = () => {
-    const { mutate } = useSWR(cacheKey, getTodos);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleAddTodo = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(inputRef.current?.value)
-        // try {
-        //     await addTodo({
-        //         text: inputRef.current
-        //             ? inputRef.current.value
-        //             : "nothing here",
-        //         completed: false,
-        //     });
-        //     toast.success("Todo added successfully");
-        //     mutate();
-        //     if (inputRef.current) {
-        //         inputRef.current.value = "";
-        //     }
-        // } catch (err) {
-        //     console.error(err);
-        // }
-    };
+    // const handleAddTodo = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     console.log(inputRef.current?.value)
+    //     // try {
+    //     //     await addTodo({
+    //     //         text: inputRef.current
+    //     //             ? inputRef.current.value
+    //     //             : "nothing here",
+    //     //         completed: false,
+    //     //     });
+    //     //     toast.success("Todo added successfully");
+    //     //     mutate();
+    //     //     if (inputRef.current) {
+    //     //         inputRef.current.value = "";
+    //     //     }
+    //     // } catch (err) {
+    //     //     console.error(err);
+    //     // }
+    // };
 
-    function onSubmit(token) {
+    function onSubmit(token:any) {
         console.log(token);
     }
+
+    console.log(onSubmit);
 
     return (
         <AddTodoWrapper>
