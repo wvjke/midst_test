@@ -15,32 +15,37 @@ const AddTodo = () => {
 
     const handleAddTodo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            await addTodo({
-                text: inputRef.current
-                    ? inputRef.current.value
-                    : "nothing here",
-                completed: false,
-            });
-            toast.success("Todo added successfully");
-            mutate();
-            if (inputRef.current) {
-                inputRef.current.value = "";
-            }
-        } catch (err) {
-            console.error(err);
-        }
+        console.log(inputRef.current?.value)
+        // try {
+        //     await addTodo({
+        //         text: inputRef.current
+        //             ? inputRef.current.value
+        //             : "nothing here",
+        //         completed: false,
+        //     });
+        //     toast.success("Todo added successfully");
+        //     mutate();
+        //     if (inputRef.current) {
+        //         inputRef.current.value = "";
+        //     }
+        // } catch (err) {
+        //     console.error(err);
+        // }
     };
+
+    function onSubmit(token) {
+        console.log(token);
+    }
 
     return (
         <AddTodoWrapper>
             <form
-                onSubmit={handleAddTodo}
                 style={{ display: "flex", width: "100%", gap: "20px" }}
+                id="demo-form" method="POST"
             >
                 <TodoInput required ref={inputRef} />
-                <TodoButton color="#007bff">Add Todo</TodoButton>
             </form>
+            <button className="g-recaptcha" data-sitekey="6LekMWspAAAAALwpi8hCrBZj1cMI1vyIE4aORfcA" data-callback="onSubmit">Submit</button>
         </AddTodoWrapper>
     );
 };
